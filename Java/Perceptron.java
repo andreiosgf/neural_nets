@@ -55,23 +55,23 @@ public class Perceptron {
         int[][] x=new int[4][3];
         double[] d=new double[4];
         double[] w=new double[3];
-        double alpha=0.01;
+        double alpha=0.1;
         
         x[0][0]=0;
         x[0][1]=0;
-        x[0][2]=-1;
+        x[0][2]=1;
         
         x[1][0]=0;
         x[1][1]=1;
-        x[1][2]=-1;
+        x[1][2]=1;
         
         x[2][0]=1;
         x[2][1]=0;
-        x[2][2]=-1;
+        x[2][2]=1;
         
         x[3][0]=1;
         x[3][1]=1;
-        x[3][2]=-1;
+        x[3][2]=1;
         
         d[0]=0;
         d[1]=0;
@@ -79,8 +79,8 @@ public class Perceptron {
         d[3]=1;
         
         w[0]=1.0;
-        w[1]=0.5;
-        w[2]=2.0;
+        w[1]=0.0;
+        w[2]=-0.5;
         
         double y=0;
         int full_error=0;
@@ -92,6 +92,7 @@ public class Perceptron {
             System.out.println("**********************INIT EPOCH "+epocas+" ***********************");
             for(int i=0;i<x.length;i++){
                 
+                System.out.println("Patrón "+i);
                 printArray(x[i]);
                 System.out.println("");
                 printArray(w);
@@ -99,7 +100,7 @@ public class Perceptron {
                 System.out.println("Sumatoria = "+y);
                 error=d[i]-y;
                 System.out.println("Error "+error);
-                if(error>0)
+                if(error!=0)
                 {
                     System.out.println("Updating weights");
                     full_error++;
